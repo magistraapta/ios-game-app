@@ -10,6 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run tests
-      run: xcodebuild clean test -project "ios-game.xcodeproj" -scheme "ios-game" -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=latest"
+      run: xcodebuild clean test -project "ios-expert.xcodeproj" -scheme "ios-expert" -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=latest"
     - name: Build App
-      run: xcodebuild -project "ios-game.xcodeproj" -scheme "ios-gae" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+      run: xcodebuild -project "ios-expert.xcodeproj" -scheme "ios-expert" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
