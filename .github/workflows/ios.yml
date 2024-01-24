@@ -1,30 +1,17 @@
-name: iOS CI
+name: Swift
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
   build:
-    runs-on: macos-latest
+
+    runs-on: macOS-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up Xcode
-      uses: actions/setup-xcode@v2
-      with:
-        xcode-version: '13.2' # Use the version compatible with iPhone 14 Pro
-
-    - name: Install Dependencies
-      run: |
-        gem install bundler
-        bundle install
-
-    - name: Build and Test
-      run: |
-        xcodebuild clean build -workspace ios-expert.xcworkspace -scheme ios-expert -destination 'platform=iOS Simulator,OS=16.4,name=iPhone 14 Pro'
-
+    - uses: actions/checkout@v1
+    - name: Force Xcode 11
+      run: sudo xcode-select -switch /Applications/Xcode_14.3.app
+    - name: Run tests
+      run: xcodebuild clean test -project "ios-game.xcodeproj" -scheme "ios-game" -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=latest"
+    - name: Build App
+      run: xcodebuild -project "ios-game.xcodeproj" -scheme "ios-gae" -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
