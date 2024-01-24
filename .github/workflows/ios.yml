@@ -27,11 +27,3 @@ jobs:
       run: |
         xcodebuild clean build -workspace YourApp.xcworkspace -scheme YourApp -destination 'platform=iOS Simulator,OS=15.0,name=iPhone 14 Pro'
 
-    - name: Archive Build
-      run: xcodebuild archive -workspace YourApp.xcworkspace -scheme YourApp -destination 'generic/platform=iOS' -archivePath build/YourApp.xcarchive
-
-    - name: Create IPA
-      run: xcodebuild -exportArchive -archivePath build/YourApp.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath build
-
-    - name: Deploy to App Store (example, replace with your deployment step)
-      run: fastlane release
