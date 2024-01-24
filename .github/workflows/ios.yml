@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Force Xcode 11
+    - name: Force Xcode 14
       run: sudo xcode-select -switch /Applications/Xcode_14.3.app
     - name: Run tests
       run: xcodebuild clean test -project "ios-game.xcodeproj" -scheme "ios-game" -destination "platform=iOS Simulator,name=iPhone 14 Pro Max,OS=latest"
