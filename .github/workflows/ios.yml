@@ -2,8 +2,9 @@ name: iOS CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -25,5 +26,5 @@ jobs:
 
     - name: Build and Test
       run: |
-        xcodebuild clean build -workspace YourApp.xcworkspace -scheme YourApp -destination 'platform=iOS Simulator,OS=15.0,name=iPhone 14 Pro'
+        xcodebuild clean build -workspace ios-expert.xcworkspace -scheme ios-expert -destination 'platform=iOS Simulator,OS=16.4,name=iPhone 14 Pro'
 
